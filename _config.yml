@@ -1,0 +1,21 @@
+# Site settings
+title:       Cosmic Radiation Lab
+description: > # this means to ignore newlines until "baseurl:"
+  A lab class about cosmic radiation for Experimental Nuclear Physics undergraduate students.
+baseurl:     "" # the subpath of your site, e.g. /blog/
+url:         "http://cosmicrad.tk" # the base hostname & protocol for your site
+permalink:   /:title
+
+exclude:     [ .gitignore ]
+
+# User names
+twitter_username: octopusinvitro
+git_username: octopusinvitro
+git_repo:     cosmic-rad
+lab-guide:    blob/master/cosmicrad.pdf?raw=true
+
+# Build settings
+markdown: kramdown
+sass:
+  style: compressed
+

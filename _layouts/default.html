@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+{% include head.html %}
+
+	<body>
+
+<!--     *** HEADER ***   -->
+{% include headertop.html %}
+
+			<h1>{{ site.title}}</h1>
+			<h2>A lab class about <strong>cosmic radiation</strong> for Experimental Nuclear Physics undergraduate students.</h2>
+{%if site.git_repo %}
+			<a class="button" href="https://github.com/{{ site.git_username }}/{{ site.git_repo }}">Check the repo</a>{% endif %}
+
+{% include headerbot.html %}
+
+<!--     *** CONTENT ***   -->
+		<div class="content">
+			<div class="wrapper">
+{{ content }}
+			</div>
+		</div>
+
+<!--     *** FOOTER ***   -->
+{% include footer.html %}
+
+		<script src="{{ "/js/vendor/prism.js" | prepend: site.baseurl }}"></script>
+{% include stats.html %}
+	</body>
+
+</html>

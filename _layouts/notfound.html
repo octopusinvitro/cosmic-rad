@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+{% include head.html %}
+
+	<body>
+
+<!--     *** HEADER ***   -->
+{% include headertop.html %}
+
+			<h1>Not found :(</h1>
+			<h2>Sorry, but the page you were trying to view does not exist.</h2>
+
+{% include headerbot.html %}
+
+<!--     *** CONTENT ***   -->
+		<div class="content">
+			<div class="wrapper clearfix">
+{{ content }}
+			</div>
+		</div>
+
+<!--     *** FOOTER ***   -->
+{% include footer.html %}
+
+	</body>
+
+</html>

@@ -1,0 +1,137 @@
+body {
+	font-family: $base-font-family;
+	font-size:   $base-font-size;
+	line-height: $base-line-height;
+	font-weight: 400;
+	color:       $text-color;
+	background: $background-color url(body-bg.jpg) left top repeat;
+	background-image:
+		url(body-bg.jpg),
+		radial-gradient(ellipse at center, white 0%, white 50%, black 100%); 
+}
+
+
+::-moz-selection {
+	background: $background-color;
+	text-shadow: none;
+}
+
+::selection {
+	background: $background-color;
+	text-shadow: none;
+}
+
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre,
+ul, ol, dl, figure,
+%vertical-rhythm {
+	margin-bottom: $spacing-unit / 2;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 300;
+	clear: both;
+	font-family: 'Orbitron', sans-serif; 
+}
+
+h1, h2 {
+	color: #fff;
+}
+
+h1 {
+	text-transform: uppercase; 
+	font-size: 2.5em; 
+	margin: 1.2em auto .2em;
+	text-shadow: 0 .1em .2em rgba(0,0,0,.5)
+}
+
+h2 {
+	max-width:  14em;
+	margin: .5em auto 1em;
+	font-family: $base-font-family; 
+	font-weight: 300; 
+	text-shadow: 0 .1em .2em rgba(0,0,0,.8)
+}
+
+h3 {
+	color: $yellow;
+}
+
+h4 {
+	color: $red;
+}
+
+img {
+	float: left;
+	max-width: 100%;
+	margin: 0 1.5em 1.5em 0;
+	vertical-align: middle;
+	border-radius: .75em;
+}
+
+ul, ol {
+	margin-left: $spacing-unit;
+}
+
+li {
+	> ul,
+	> ol {
+		 margin-bottom: 0;
+	}
+}
+
+a {
+	color: $brand-color;
+	text-decoration: none;
+	transition: all 0.4s ease;
+
+	&:visited {
+		color: $brand-color;
+	}
+
+	&:hover {
+		color: $text-color;
+		text-decoration: underline;
+	}
+}
+
+
+.clearfix:before,
+.clearfix:after {
+	content: " ";
+	display: table;
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+.clearfix {
+	*zoom: 1;
+}
+
+
+.icon {
+	margin-right: .5em;
+
+	> svg {
+		display: inline-block;
+		width:  1em;
+		height: 1em;
+		vertical-align: middle;
+
+		path {
+			fill: $green;
+		}
+	}
+}
+.visuallyhidden {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}

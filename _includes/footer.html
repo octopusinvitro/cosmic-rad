@@ -1,0 +1,54 @@
+		<footer class="site-footer">
+			<div class="wrapper clearfix">
+
+				<h3>{{ site.title }}</h3>
+
+				<div class="footer-col-wrapper">
+					<div class="footer-col">
+						<h4>Licenses</h4>
+						<p>- All code is <a href="http://opensource.org/licenses/MIT">MIT licensed</a>.<br />
+						- The lab-guide is licensed <a href="http://creativecommons.org/licenses/by-nc/4.0/legalcode">CC BY-NC 4.0</a>.<br />
+						- Hero-image credits: Vela Supernova Remnant <a href="http://antwrp.gsfc.nasa.gov/apod/lib/ about_apod.html&#35;srapply">Copyright</a>: <a href="http://www.robgendlerastropics.com/">Robert Gendler</a><br />
+						- <a href="http://prismjs.com/">Prismjs</a> syntax highlighter by Lea Verou.</p>
+					</div>
+
+					<div class="footer-col">
+						<h4>Contact</h4>
+						<ul class="social">{% if site.twitter_username %}
+
+							<li>
+								<span class="icon">
+{% include twitter.svg %}								</span>
+								<a href="https://twitter.com/{{ site.twitter_username }}">{{ site.twitter_username }}</a>
+							</li>{% endif %}{% if site.git_username %}
+							<li>
+								<span class="icon">
+{% include github.svg %}								</span>
+								<a href="https://github.com/{{ site.git_username }}/{{ site.git_repo }}">{{ site.git_repo }}</a>
+							</li>
+
+							<li>
+								<span class="icon">
+{% include bitbucket.svg %}								</span>
+								<a href="https://bitbucket.org/{{ site.git_username }}/{{ site.git_repo }}">{{ site.git_repo }}</a>
+							</li>
+
+							<li>
+								<span class="icon">
+{% include gitlab.svg %}								</span>
+								<a href="https://gitlab.com/{{ site.git_username }}/{{ site.git_repo }}">{{ site.git_repo }}</a>
+							</li>{% endif %}
+						</ul>
+					</div>
+
+					<div class="footer-col">
+						<h4>About</h4>
+						<p>{{ site.description }}</p>
+						<p>March 23, 2005</p>
+					</div>
+				</div>
+
+				<p class="codedby">Site coded and maintained by <strong>Octopus in Vitro</strong>.</p>
+
+			</div>
+		</footer>

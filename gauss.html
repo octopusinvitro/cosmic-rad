@@ -1,0 +1,170 @@
+---
+layout: default
+title: Gauss
+short: Gauss
+permalink: /gauss/
+---
+
+				<p>The <code>gauss.c</code> snippet solves a system of equations by the method of <strong>Gauss-Jordan</strong>. It can be used in your fits to obtain the coefficients of the fit by the method of <strong>least squares</strong>.</p>
+
+				<p>It uses the program <code>gaussj.c</code> from the <strong>Numerical recipes</strong> (<a href="http://www.nr.com">http://www.nr.com</a>) collection. You need to include both in your code:</p>
+<pre><code class="language-c">#include "nrutil.c"
+#include "gaussj.c"</code></pre>
+
+				<p>If you have a group of <code>N</code> pairs of data (x<sub>i</sub>, y<sub>i</sub>), whose behaviour can be described by the equation:</p>
+				<p>y = A<sub>0</sub> + A<sub>1</sub>x + A<sub>1</sub>x<sup>2</sup> + ... + A<sub>n-1</sub>x<sup>n-1</sup></p>
+				<p>the problem is to determine the values of the A<sub>i</sub> parameters.</p>
+
+			  
+
+				<h3>The code</h3>
+
+				<p>The program reads a file with data in two columns (the <code>x</code> and <code>y</code> data you have measured) and asks the number of parameters for the fit (more on this in Appendix D of the <a href="https://github.com/{{ site.git_username }}/{{ site.git_repo }}/{{ site.lab-guide }}">lab-guide</a> about <strong>statistical distributions</strong>).</p>
+<pre><code class="language-c">/***************************************************
+ * Data input
+ ***************************************************/
+printf("\nName of data file: ");
+scanf("%s", name);
+N = numOfLines(name);
+printf("N = %d\n", N);
+	
+printf(     "\nNumber of parameters of the funcion: ");
+scanf("%d", &n);
+fprintf(fp, "\nNumber of parameters of the funcion: %d\n", n);</code></pre>
+
+
+				<p>The vectors and matrices are created according to the <code>nrutil.c</code> definitions. Other relevant vectors and matrices are calculated too. Then, a call to the <code>gaussj()</code> function is made to invert the matrix of the fit, and finally the corrected values for the <code>y</code> coordinate are calculated. The <strong>standard deviation</strong>, the <strong>errors</strong> and the <strong>regression coefficients</strong> are calculated as well.</p>
+
+				<p>Finally, everything is written to an output file.</p>
+
+
+
+				<h3>Method of simple least squares</h3>
+				<p>In this method we want to determine the parameters that make the discrepancies between the measured values y<sub>i</sub> and the calculated ones y<sub>i,cal</sub>  minimal:</p>
+				<p>&chi;<sup>2</sup> = &sum; ( y<sub>i</sub> - y<sub>i,calc</sub> )<sup>2</sup> = &sum; ( y<sub>i</sub> - A<sub>0</sub> + A<sub>1</sub>x  + A<sub>1</sub>x<sup>2</sup> + ... + A<sub>n-1</sub>x<sup>n-1</sup> )<sup>2</sup></p>
+
+				<p>For this, we equal the partial differential of &chi;<sup>2</sup> with respect to each of the parameters A<sub>j</sub> to cero:</p>
+				<p>( &part;&chi;<sup>2</sup>/&part;A<sub>j</sub> ) = 2 &sum; ( y<sub>i</sub> - A<sub>0</sub> + A<sub>1</sub>x  + A<sub>1</sub>x<sup>2</sup> + ... + A<sub>n-1</sub>x<sup>n-1</sup> )( -x<sub>i</sub> )<sup>j</sup> = 0</p>
+
+				<p>This leads to a system of equations <strong>a x = b</strong>, where <strong>a</strong> is the <em>matrix of curvature</em>, and:</p>
+				<p>x = ( A<sub>0</sub>, A<sub>1</sub>, A<sub>1</sub>, ... A<sub>n-1</sub> )<br />
+				   b = ( &sum;y<sub>i</sub>, &sum;y<sub>i</sub>x<sub>i</sub>, &sum;y<sub>i</sub>x<sub>i</sub><sup>2</sup>, ... &sum;y<sub>i</sub>x<sub>i</sub><sup>n-1</sup> )</p>
+<pre><code class="language-c">printf(    "\n\nMatrix a before inversion:\n\n");
+fprintf(fp,"\n\nMatrix a before inversion:\n\n");
+for (i=1; i&lt;=n; i++) {	   
+	for (j=1; j&lt;=n; j++) {
+		sumk = 0.0;
+		for (k=1; k&lt;=N; k++)
+			sumk += pow(x[k], i+j-2);			
+		a[i][j] = sumk;
+		printf(     " %10.3lf", a[i][j]);
+		fprintf(fp, " %10.3lf", a[i][j]);
+	}
+	printf(     "\n");
+	fprintf(fp, "\n");
+}
+
+/***************************************************/
+printf(    "\nVector b:\n\n");
+fprintf(fp,"\nVector b:\n\n");
+for (j=1; j&lt;=n; j++) {
+	sumj = 0.0;
+	for (i=1; i&lt;=N; i++)
+		sumj += y[i]*pow(x[i], j-1);
+	b[j] = sumj;
+	printf(     " %10.3lf", b[j]);
+	fprintf(fp, " %10.3lf", b[j]);
+}</code></pre>
+
+
+				<p>To solve the system, we write the previous equation in the form <strong>x = a<sup>-1</sup> b</strong>. The inverse of matrix <strong>a</strong> is called <em>error matrix</em> or <em>covariance matrix</em>, because its elements are the variance and covariance of the fit parameters A<sub>j</sub>.</p>
+<pre><code class="language-c">gaussj(a,n,B,n);
+printf(     "\n\nMatrix a after inversion:\n\n");
+fprintf(fp, "\n\nMatrix a after inversion:\n\n");
+for (i=1; i&lt;=n; i++) {
+	for (j=1; j&lt;=n; j++) {
+		printf(     " %10.3lf", a[i][j]);
+		fprintf(fp, " %10.3lf", a[i][j]);
+	}
+	printf(    "\n");
+	fprintf(fp,"\n");
+}</code></pre>
+
+
+				<p>The <em>standard deviation</em> of the fit is:</p>
+				<p>s = &radic; &sum; ( y<sub>i</sub> - y<sub>i,calc</sub> )<sup>2</sup>/N -n</p>
+<pre><code class="language-c">/***************************************************
+ * Standard deviation
+ ***************************************************/
+sumi    = 0.0;
+for (i=1; i&lt;=N; i++) 
+	sumi += pow(y[i] - yc[i], 2);
+s = sqrt( sumi / ((double)(N-n)) );
+printf(     "\n\nStandard deviation of the fit: \n s = %3.3e", s);
+fprintf(fp, "\n\nStandard deviation of the fit: \n s = %3.3e", s);</code></pre>
+	
+
+				<p>and the uncertainties in the A<sub>j</sub> parameters are calculated according to:</p>
+				<p>s( A<sub>j</sub> ) = s &radic; &epsilon;<sub>jj</sub></p>
+				<p>where &epsilon;<sub>jj</sub> represent the elements of the diagonal of the error matrix.</p>
+<pre><code class="language-c">/***************************************************
+ * Error calculation
+ ***************************************************/
+printf(     "\n\nUncertainty:\n\n");
+fprintf(fp, "\n\nUncertainty:\n\n");
+for(i=1; i&lt;=n; i++) {
+	S[i] = s*sqrt(a[i][i]);
+	printf(     " S[A%d] = %3.3e\n", i, S[i]);
+	fprintf(fp, " S[A%d] = %3.3e\n", i, S[i]);
+}</code></pre>
+
+
+				<p>The <em>coefficient of multiple regression</em> <code>R</code> is defined as:</p>
+				<p>R<sup>2</sup> = &sum; ( A<sub>j</sub> S<sub>jy</sub><sup>2</sup> / S<sub>y</sub><sup>2</sup> )</p>
+				<p>where</p>
+				<p>x<sub>j, av</sub> = &sum; x<sub>ji</sub> / N</p>
+				<p>y<sub> av</sub> = &sum; y<sub>i</sub> / N</p>
+				<p>S<sub>jy</sub><sup>2</sup> = &sum; ( x<sub>ji</sub> - x<sub>j, av</sub> ) ( y<sub>j</sub> - y<sub>av</sub> ) / N-1</p>
+<pre><code class="language-c">/***************************************************
+ * Regression coefficient
+ ***************************************************/
+for (j=1; j&lt;=n; j++) {
+	sumi = 0.0;
+	for (i=1; i&lt;=N; i++) 
+		sumi += pow(x[i], j-1);
+	xj[j] = sumi / (double)N;
+	printf(     "\n Average of x to the power of %d = %3.3lf", j-1, xj[j]);
+	fprintf(fp, "\n Average of x to the power of %d = %3.3lf", j-1, xj[j]);
+}
+	
+sumi = 0.0;
+for (i=1; i&lt;=N; i++)
+	sumi += y[i];
+yj = sumi / (double)N;
+printf(     "\n\n Average of experimental y = %3.3lf\n", yj);
+fprintf(fp, "\n\n Average of experimental y = %3.3lf\n", yj);
+
+for (j=1; j&lt;=n; j++) {
+	sumi = 0.0;
+	for (i=1; i&lt;=N; i++)
+		sumi += (pow(x[i], j-1) - xj[j])*(y[i] - yj);
+	Sjy2[j] = sumi / ( (double)(N-1) );
+	printf(     "\n Dispersion of x%dy: S[x,y]2 = %3.3lf", j-1, Sjy2[j]);
+	fprintf(fp, "\n Dispersion of x%dy: S[x,y]2 = %3.3lf", j-1, Sjy2[j]);
+}</code></pre>
+
+
+				<p>and</p>
+				<p>S<sub>y</sub><sup>2</sup> = &sum; ( y<sub>i</sub> - y<sub>av</sub> )<sup>2</sup> / N-1</p>
+<pre><code class="language-c">sumi = 0.0;
+for (i=1; i&lt;=N; i++) 
+	sumi += pow(y[i] - yj, 2);
+Sy2 = sumi / ( (double)(N-1) );
+printf(     "\n\n Dispersion of experimental y: S[y]2 = %3.3lf\n", Sy2);
+fprintf(fp, "\n\n Dispersion of experimental y: S[y]2 = %3.3lf\n", Sy2);
+
+R2 = 0.0;
+for (j=1; j&lt;=n; j++) 
+	R2 += A[j]*Sjy2[j] / Sy2;
+printf(     "\n Regression coefficient: R2 = %lf\n", R2);
+fprintf(fp, "\n Regression coefficient: R2 = %lf\n", R2);</code></pre>

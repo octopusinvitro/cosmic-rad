@@ -1,0 +1,236 @@
+.wrapper {
+	max-width: 45em;
+    margin:    0 auto;
+	padding:   0 1em;
+}
+
+/********************************
+ *   HEADER
+ ********************************/
+.site-header {
+	text-align: center;
+	box-shadow: 0 -1em 1em 0 rgba(0,0,0,.5) inset;
+}
+
+.top {
+	padding: .5em 0;
+	background-color: #000;
+	background-color: rgba(0, 0, 0, 0.6);
+
+	a {
+		display: block;
+		margin:  0 auto;
+		width:   2em;
+		height:  2em;
+		background: transparent url(top.jpg) left top no-repeat;
+		border:  1px solid $brand-color;
+		border-radius: 50%;
+
+		&:hover {
+			box-shadow:  0 .2em .5em 0 rgba(0,0,0,1) inset, 0 0 1em 0 rgba(255,255,255,.5);
+		}
+	}
+
+}
+
+/********************************
+ *   NAVIGATION
+ ********************************/
+.no-svg .site-nav {
+	background: transparent url(hamburguer.png) center top no-repeat;
+}
+.site-nav {
+	position: relative;
+	bottom: -4em;
+
+	span {
+		display: block;
+		margin:  auto;
+		width:   3em;
+		height:  3em;
+		cursor:  pointer;
+	}
+	
+	ul {
+		margin: 0;
+		padding: 0;
+		max-height: 0;
+		overflow: hidden;
+		opacity: 0;
+		transition: max-height 1s, opacity 1s;
+	}
+
+	li {
+		display: inline;
+		padding: 0;	
+	}
+
+	a {
+		display:     inline-block;
+		width:       5em;
+		height:      5em;
+		line-height: 5em;
+		margin:      1em;
+		padding:     0em;
+		color:       $brand-color;
+		border:     .5em solid $brand-color;
+		font-family:     'Orbitron', sans-serif; 
+		text-transform:   uppercase;
+		background-color: $background-color;
+		background-color: rgba(0, 0, 0, 0.6);
+		background-image:
+			url(body-bg.jpg),
+			radial-gradient(ellipse at center, white 0%, white 50%, black 100%); 
+ 		border-radius:    50%;
+	
+		&:hover,
+		&.selected {
+			color:        #fff;
+			border-color: #fff;
+			box-shadow:   0 0 1.5em 0 rgba(255,255,255,.3);
+			text-shadow:  0 .2em .5em rgba(255,255,255,.3);
+			text-decoration: none;
+		}
+
+		&:visited {
+			color: $brand-color;
+
+			&:hover {
+				color: #fff;
+			}
+		}
+
+		&.selected:visited {
+			color: #fff;
+		}
+	}
+
+	&:hover ul {
+		max-height: 30em;
+		opacity: 1;
+	}
+}
+
+/********************************
+ *   CONTENT
+ ********************************/
+.content {
+	padding: 4em 0;
+	border: solid $brand-color;
+	border-width: .1em 0;
+}
+
+/********************************
+ *   FOOTER
+ ********************************/
+.site-footer {
+	padding: $spacing-unit 0;
+	color:   $footer-text;
+	font-size: .8em;
+	background-color: #000;
+
+	.wrapper {
+		max-width: 56em;
+	}
+
+	a {
+		color: $brand-color;
+	}
+
+	ul,
+	li {
+		list-style:   none;
+		margin-left:  0;
+		padding-left: 0;
+	}
+}
+
+.footer-col {
+	box-sizing: border-box;
+	float: left;
+	margin-bottom: $spacing-unit / 2;
+	padding-left:  $spacing-unit / 2;
+}
+
+.social li {
+	line-height: 3em;
+}
+
+.codedby {
+	clear: both;
+	text-align: center;
+	color: $green;	
+}
+
+/********************************
+ *   BUTTONS
+ ********************************/
+.button {
+	display: block;
+	width:   8.5em;
+	margin:  0 auto;
+	padding: 1.4em 4em 1.4em 5.5em;
+	color:   #fff;
+	text-transform: uppercase;
+	font-size:  .8em;
+	font-weight: 700;
+	text-shadow: 0 2px 2px rgba(0, 0, 0, 0.6);
+	background:  #000 url(ghicon.png) 1em top no-repeat;
+	background-color: rgba(0, 0, 0, 0.6);
+	border-radius: 5em;
+
+	&:hover {
+		background-color: #000;		
+		color: #fff;
+		text-decoration: none;
+		box-shadow: 0 0 1em 0 #fff;
+	}
+	
+	&:visited {
+		color: #fff;
+	}
+}
+
+/********************************
+ *   GOOGLE'S 404
+ ********************************/
+#goog-wm-qt {
+	padding: .5em 1em;
+	background-color: $dark;
+	color:  $text-color;
+	border: .1em solid transparent;
+	border-radius: .3em;
+
+	&:hover {
+		border: .1em solid $brand-color;
+	}
+}
+
+#goog-wm-sb {
+	display: inline-block;
+	margin-left:  1em;
+	padding: 1em 3em;
+	color:   #fff;
+	text-transform:   uppercase;
+	font-size:       .8em;
+	font-weight:      700;
+	background-color: #000;
+	background-color: rgba(0, 0, 0, 0.3);
+	border-radius:    5em;
+	border-color:     transparent;
+	border: .1em solid rgba(255,255,255,.2);
+
+	&:hover {
+		box-shadow: 0 0 1em 0 rgba(255,255,255,.2);
+	}
+}
+
+#goog-wm-qt,
+#goog-wm-sb {
+	margin-top: 2em;
+	transition: all .4s ease;
+}
+
+.content .content {
+	padding: 0
+}

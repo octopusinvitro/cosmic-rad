@@ -1,0 +1,26 @@
+---
+layout: default
+---
+				<p>Back in 2005, I made a guide for undergraduate students, explaining how to measure cosmic rays, for a lab class I was teaching.</p>
+
+				<img src="{{ "/img/cover.png" | prepend: site.baseurl }}" width="200" height="283" alt="Lab guide cover">
+				<p>This repo contains some macros to calculate radioactive source efficiencies (<a href="{{ "/monte-carlo/" | prepend: site.baseurl }}">MC</a>), fit parameters (<a href="{{ "/gauss/" | prepend: site.baseurl }}">Gauss</a> and <a href="{{ "/weighted-mean/" | prepend: site.baseurl }}">WMean</a>), and the confidence level of the fits (<a href="{{ "/confidence-level/" | prepend: site.baseurl }}">CL</a>).</p>
+
+				<p>The theory and lab techniques are explained in the lab-guide <a href="https://github.com/{{ site.git_username }}/{{ site.git_repo }}/{{ site.lab-guide }}"><code>cosmicrad.pdf</code></a>. LaTeX files for this document are provided. This is my first attempt to design a layout for a document in LaTeX.</p>
+
+<!--				<img src="{{ "/img/page.png" | prepend: site.baseurl }}" width="400" height="281">-->
+
+				<p>The code uses some snippets of code from the good ol' <strong>Numerical Recipes</strong> <a href="http://www.nr.com">http://www.nr.com</a>.
+				<p>Feel free to edit this work and add any improvements.</p>
+
+				<h3>Compiling and running</h3>
+
+				<h4>Compile</h4>
+				<p>C programs:</p>
+				<pre><code class="language-bash" style="white-space: pre-wrap;">$ gcc filename.c -o filename -lm</code></pre>
+
+				<p>C++ programs:</p>
+				<pre><code class="language-bash" style="white-space: pre-wrap;">$ g++ filename.cpp -o filename</code></pre>
+
+				<h4>Run</h4>
+				<pre><code class="language-bash" style="white-space: pre-wrap;">$ ./filename</code></pre>
