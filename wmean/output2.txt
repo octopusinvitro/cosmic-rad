@@ -1,0 +1,12 @@
+
+ Data[1] = 21.000	Error[1] = 5.000
+ Data[2] = 28.000	Error[2] = 5.000
+ Data[3] = 22.000	Error[3] = 5.000
+ Data[4] = 25.000	Error[4] = 5.000
+ Data[5] = 22.000	Error[5] = 5.000
+ Data[6] = 31.000	Error[6] = 6.000
+
+Weighted Average   = 24.502
+Typ Deviation      = 2.095
+Standard Deviation = 1.783
+
