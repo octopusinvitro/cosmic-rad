@@ -12,11 +12,11 @@ The theory and lab techniques are explained in the lab-guide `cosmicrad.pdf`. La
 $ . cosmicrad
 ```
 
-The code is explained in [http://cosmicrad.tk](http://cosmicrad.tk). It uses some snippets of code from the good ol' **Numerical Recipes** [http://www.nr.com/](http://www.nr.com/).
-
 Feel free to edit this work and add any improvements.
 
 ## The snippets
+
+The code is explained in [http://cosmicrad.tk](http://cosmicrad.tk). It uses some snippets of code from the good ol' **Numerical Recipes** [http://www.nr.com/](http://www.nr.com/).
 
 ### Compile:
 
