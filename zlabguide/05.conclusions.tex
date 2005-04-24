@@ -1,0 +1,77 @@
+\chapter{Conclusions}
+
+In this lab we will study the characteristics of a cosmic-ray coincidences detection system, that uses a scintillator-PM and NIM modules in a standard chassis, with the following settings:
+
+\bi
+	\item \textit{Time window of the system}: 50 $\pm$ 1 ns.
+	\item \textit{Optimum operating point}: HV = 2200 $\pm$ 1V, V$_\text{threshold}$  = $-$200 $\pm$ 1 mV. 
+	\item \textit{Estimation of spurious coincidences}: Check that their contribution is not only low but is negligible (around 0.002\%).
+	\item \textit{Statistical nature}: For the time range chosen for the measurements, (between 6 and 10 minutes) the cosmic radiation should fit a Gaussian distribution with mean $\mu$ and deviation $\sigma = \sqrt\mu$, with a $\chi^2$ that has a confidence level higher than 92.6\%. For measurements below 10 s it fits well to a Poissonian distribution, whose $\chi^2$ has a confidence level of 99.8\%.
+	\item \textit{Component separation}: the results at zero thickness and a distance between detectors of 30 cm are similar to these:
+
+	\ctable [pos = H]
+	{c c c c}
+	{}
+ 	{\FL
+		\textbf{(m$^{-2}$s$^{-1}$)}&
+		\textbf{HARD} &
+		\textbf{SOFT} &
+		\textbf{TOTAL}\\
+		Lead     & 19 $\pm$ 3 & 13 $\pm$ 6 & 32 $\pm$ 9 \\ 
+		Aluminum & 22 $\pm$ 1 & 12 $\pm$ 2 & 34 $\pm$ 3
+	\LL}
+
+	\item \textit{Discard of the isotropic hypothesis}: The measurements must rule out that the hard radiation component has an isotropic distribution, but instead varies as a $\cos^2\theta$. Also, the ratio between hard and soft component remains constant with distance, so the soft component has the same angular distribution.
+	\item \textit{Geometric efficiency}: It has been shown that there is a change in the measured radiation flux to the distance between scintillators that geom is given by the system, which has an approximately inverse quadratic dependence with distance. The MC simulation confirms this dependence made.
+\ei
+
+Final data for soft, hard and full contribution of cosmic radiation obtained experimentally and corrected by the geometric efficiency:
+
+	\ctable [pos = H]
+	{c c c c}
+	{}
+ 	{\FL
+		\textbf{(m$^{-2}$s$^{-1}$)}&
+		\textbf{TOTAL} &
+		\textbf{HARD} &
+		\textbf{SOFT}\\
+		$J_0$ & 52 $\pm$ 9  & 32 $\pm$ 3 & 20 $\pm$ 6\\
+		$J$   & 82 $\pm$ 15 & 51 $\pm$ 5 & 31 $\pm$ 10
+	\LL}
+
+The sections presented can be considered as basic descriptors of the techniques that are used to determine the most important properties of cosmic radiation at ground level, and its muon component.
+
+
+\section{Reflection on the main sources of error}
+
+
+A difference of 200 V in the working point only makes a difference in the number of particles we count. What happens is that, depending on which phenomenon is observed, a variation like this may be significant or not.
+
+For example, a variation of 10 particles is a variation of 10\% if we were counting  100 and now we count 90. But is a variation of 5\% if I measured 200 and now I see 190. If the experiment is dependent on detecting differences larger than 10\%, in this example the second case would be a bad place to work.
+
+When measuring attenuation, this may have a large influence, since muons are very difficult to attenuate, and differences in the number of coincidences when increasing the thickness are very small.
+
+
+\subsection{Other sources of error}
+
+Other sources of error could be considered:
+	\bi
+		\item Poor contact between the scintillator and the photomultiplier. The most significant loss of particles in this experiment is the PM--scintillator transmission \cite{sou:83}.
+		\item The approximation that the interaction cross section is constant, with the energy of the incident particles may not be entirely correct in certain energy ranges that may appear in the experiment.
+		\item Using a counter instead of the NIM coincidences module.
+		\item Treating the detectors as ideal surfaces.
+		\item Assuming that the trajectories of muons are straight.
+		\item Some channel of the NIM modules not working properly.
+		\item The effect of the thickness of the scintillator is not taken into account in the MC simulation, and it may have some impact on the determination of the geometric efficiency, even if it has an exponential effect, such that $J_\text{final} = J_\text{initial} e^{- x / l}$, where $l$ is the mean free path of the particles in the detector. However it is fine to take this into account only in very large detectors, which is not the case in this experiment.
+		\item The thickness of the layers is not the sum of the thicknesses, there are air-filled spaces, although the air really has very little effect on the incident particles, as demonstrated on a small calculation performed on the relevant section of chapter \ref{chap:exp}.
+		\item Coincidences cables being damaged or not of the same size...
+		\item ...etc.
+	\ei
+
+
+	\bc* * *\ec
+
+The effect of other sources that your lab mates who work near the site of measurement may be using is negligible. Furthermore, these sources will be mostly sources of alpha, beta and gamma radiation, whose range both in Pb and Al is very small.
+
+Of course you could also consider effects as warming of the conductors by Joule effect, inhomogeneous magnetic fields, etc. These factors taken separately are of systematic nature, however the influences are so complex that they can produce global effects in both directions and in variable entities, so that the corresponding errors become random.
+

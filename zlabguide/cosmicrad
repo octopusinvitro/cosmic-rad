@@ -1,0 +1,5 @@
+rm cosmicrad.aux cosmicrad.log cosmicrad.out ../cosmicrad.pdf cosmicrad.toc
+xelatex cosmicrad.tex
+xelatex cosmicrad.tex
+xelatex cosmicrad.tex
+mv cosmicrad.pdf ../

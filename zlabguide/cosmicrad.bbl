@@ -1,0 +1,40 @@
+\begin{thebibliography}{LOGFT}
+
+\bibitem[Bir95]{bir:95}
+	Bird, D.J. \textit{et al.},
+	\newblock (1995) \enquote{Detection of a cosmic ray with measured energy well beyond the expected spectral cut off due to cosmic microwave radiation}, \textit{ApJ}, \textbf{441}, 	144--150.\\
+	{\small\textbf{DOI:} \href{http://dx.doi.org/10.1086/175344}{\textbf{\url{http://dx.doi.org/10.1086/175344}}}}
+
+\bibitem[Hal98]{hal:98}
+	O'Halloran T. \textit{et al.},
+	\newblock (1998) \enquote{The Highest‐Energy Cosmic Rays}, \textit{Phys. Today}, \textbf{51}, 1, 31.\\
+	{\small\textbf{DOI:} \href{http://dx.doi.org/10.1063/1.882132}{\textbf{\url{http://dx.doi.org/10.1063/1.882132}}}}
+ 
+\bibitem[Eid04]{eid:04}
+	Eidelman S. \textit{et al.},
+	\newblock (2004) \enquote{Review of Particle Physics, Particle Data Group, Cap. 24: Cosmic Rays}, \textit{Phys. Lett. B}, \textbf{592}, 1.\\
+	{\small\textbf{DOI:} \href{http://dx.doi.org/10.1016/j.physletb.2004.06.001}{\textbf{\url{http://dx.doi.org/10.1016/j.physletb.2004.06.001}}}}
+
+\bibitem[San89]{san:89}
+	S\'anchez del R\'io C.,
+	\newblock (1989) \enquote{Error analysis}, \textit{EUDEMA, Madrid}.
+
+\bibitem[Gia75]{gia:75}
+	Giambernardino V.,
+	\newblock (1975) \enquote{Theory of errors}, \textit{Ed. Revert\'e, Caracas}.
+
+\bibitem[Kno79]{kno:79}
+	Knoll G. F.,
+	\newblock (1979) \enquote{Radiation Detection Measurement}, \textit{John Wiley and Sons, New York}.
+
+\bibitem[PRD96]{prd:96}
+	Barnett R. M. \textit{et al.},
+	\newblock (1996) \enquote{Review of Particle Properties}, \textit{Physical Review D}, \textbf{54}, 1.\\
+	{\small\textbf{DOI:} \href{http://dx.doi.org/10.1103/PhysRevD.54.1}{\textbf{\url{http://dx.doi.org/10.1103/PhysRevD.54.1}}}}
+
+\bibitem[Sou83]{sou:83}
+	Soulfanidis T.,
+	\newblock (1983) \enquote{Measurements and Detection of Radiation}, \textit{McGraw-Hill, New York}.
+
+
+\end{thebibliography}

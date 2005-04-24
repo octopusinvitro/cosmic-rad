@@ -1,0 +1,193 @@
+\cleardoublepage
+\chapter{Error handling}\label{chap:app3}
+
+
+This appendix tries to explain the basics of error handling that have been cited during the text used in the analysis of the data.
+
+
+\section{Calculating uncertainties}\label{sec:unc}
+
+\ben
+	\item \textbf{Error of direct measurements:}\\[12pt]
+In direct measurements, it is assumed a pattern as a unit of measurement, and the measurements are performed by comparison. If a magnitude $x$ is measured and an uncertainty is assigned to that measurement, the value could have values between $x_a$ and $x_b$ with equal probability. In these cases the measured value is the average value of both $\bar{x}$, and as $\delta_x$ is the difference, which is often cconsidered as error, although it is not randomized \cite{san:89}.
+
+\be \bar{x} = \frac{x_a + x_b}{2} \quad \delta_x = \frac{ \left| x_a - x_b \right| }{2}\ee
+
+The value of $\delta_x$ is always positive by definition.
+
+	\bi
+		\item \textit{Absolute error}: The measured value is offered as $\bar{x} \pm \delta_x$, with $\d_x \ll \left| x \right|$.
+		\item \textit{Relative error}: $\epsilon(x) = \frac{\delta_x}{\left|x\right|} \ll 1$ It is expressed in \% if it was already multiplied by 100. Although it depends on the particular case, it is estimated that a relative error of $\geq$ 10\% is poor, and $\leq$ 1\% is good.
+	\ei
+
+	\item \textbf{Error of indirect measurements:}\label{item:ind}\\[12pt]
+The indirect measurements presented here were obtained as a function of other measurements and are considered to be absolute. Its unit of measurement is also a function of the other units of measurement.
+
+	\bi
+		\item \textit{Error propagation}: If we want to determine the error of a variable that is a function of others, we must apply the Taylor series \cite{san:89}:
+
+		\bi 
+			\item One variable: 
+				\be\begin{split}
+					z = q (x) 
+					&\quad\rightarrow\quad q\left(x + \Delta x\right) = q(x) + \frac{dq}{dx}\Delta x + \dots \\
+					&\quad\rightarrow\quad \delta(z) = \left| \frac{\delta q}{\delta x} \right|
+				\end{split}\ee
+			\item Several variables:
+				\be z = q (x, y, \dots) \quad\rightarrow\quad 
+					\delta(z) = \left| \frac{\delta q}{\delta x} \right|\delta x + 
+								\left| \frac{\delta q}{\delta y} \right|\delta y + \dots
+				\ee
+		\ei
+	\ei
+
+	\item \textbf{Error of measurements with calibrated equipment:}\\[12pt]
+Those provided by the relevant manufacturer. They are taken from the manuals.
+
+	\item \textbf{Rounding:}\\[12pt]
+All $\delta x$ error is estimated and is subject to uncertainty, so \textbf{\textit{it is enough to use one significant figure}} in the result. Therefore, the measured value $x$ is rounded up to the last significant figure present in its $\delta x$.
+
+	\bi 
+		\item \textit{Rounding rules}:
+		\bi
+			\item If the figure is $<$ 5 is it eliminated.
+			\item If the deleted figure is $>$ 5, the last retained figure is increased by one.
+			\item If the deleted figure is = 5, the nearest even number is taken as the last digit, if it is odd, the higher is taken.
+		\ei
+
+		\item Also, take the following remarks into account \cite{san:89}:
+		\bi
+			\item In additions and subtractions, the result has no more significant digits after the decimal sign than the value with lower number of significant decimal digits.
+			\item In multiplications, divisions, and roots, the result takes no more significant digits than the value with the lower number of them.
+		\ei
+	\ei
+
+
+	\item \textbf{Random errors:}\\[12pt]
+
+	\bi
+		\item \textit{One variable}:
+If the same measurement is repeated many times ($n$) it presents a variation called \textit{dispersion}. If the histogram is constructed, the best value is the \textbf{\textit{mean}}, and the error is the \textbf{\textit{deviation}} around it.
+
+		\be \bar{x} = \frac{\sum_i^n x_i}n, \qquad Mean\ Devation = \frac{\sum_i^n \left| x_i - \bar{x} \right|}n\ee
+
+The best value of $x$ is obtained as the value of $m$ that minimizes the expression:
+
+		\be \frac{\sum_i^n \left| x_i - m \right|}n\ee
+
+but since the derivative of the absolute-value function is not continuous, \textbf{\textit{variance}} is used instead:
+
+
+		\bc\begin{minipage}{.3\textwidth}
+			\bc\AlegreyaSansSC\color{gray} Variance\ec
+		\end{minipage}%
+		\begin{minipage}{.5\textwidth}
+			\graybox{.9}{.8}{\be S^2 = \frac{1}{n}\sum_i^n \left( x_i - \bar{x} \right)^2 \ee}
+		\end{minipage}\ec
+
+		\bc\begin{minipage}{.3\textwidth}
+			\bc\AlegreyaSansSC\color{gray} Standard Deviation\ec
+		\end{minipage}%
+		\begin{minipage}{.5\textwidth}
+			\graybox{.9}{.8}{\be S = \sqrt{S^2} \ee}
+		\end{minipage}\ec
+
+		\bc\begin{minipage}{.3\textwidth}
+			\bc\AlegreyaSansSC\color{gray} Corrected Standard Deviation\ec
+		\end{minipage}%
+		\begin{minipage}{.5\textwidth}
+			\graybox{.9}{.8}{\be S_{n-1} = \sqrt{\frac{1}{n-1}\sum_i^n \left( x_i - \bar{x} \right)^2} \ee}
+		\end{minipage}\ec
+
+The corrected standard deviation is used when $n$ is small, and $n-1$ are the degrees of freedom (the values minus the mean calculated from them).\\
+
+If not one, but a set of measurements of the same variable, are repeated several times (for example, 10 experiments of 3 measurements each), we can calculate the variance and the corrected standard deviation of the mean as:
+
+		\bc\begin{minipage}{.3\textwidth}
+			\bc\AlegreyaSansSC\color{gray} Variance\ec
+		\end{minipage}%
+		\begin{minipage}{.5\textwidth}
+			\graybox{.9}{.8}{\be S^2(\bar{x}) = \frac{1}{n^2}\sum S^2(x_i) = \frac{S^2(x)}{n} \ee}
+		\end{minipage}\ec
+
+		\bc\begin{minipage}{.3\textwidth}
+			\bc\AlegreyaSansSC\color{gray} Corrected Standard Deviation of the mean value\ec
+		\end{minipage}%
+		\begin{minipage}{.5\textwidth}
+			\graybox{.9}{.8}{\be S(\bar{x}) = \frac{S(x)}{\sqrt{n}} \ee}
+		\end{minipage}\ec
+
+What these expresions tell us is, that it is worth repeating the experiments a number of times, since 1 /$\sqrt{n} \ll$ 1 / $n$. However, there comes a time when the decrease in error (which follows a root-function tendence), is not worth the effort.
+
+		\item \textit{Several variables}:
+Given two variables $x$ and $y$, the \textbf{\textit{covariance}} of $x$ and $y$ is defined as:
+
+		\be S(x,y) = \frac{ \overset n{\underset i{\sum}} (x_i - \bar{x})(y_i - \bar{y})}{n} \ee
+
+  where $\left| S(x,y) \right| \ll S(x)S(y)$, and if $x$ and $y$ are independent,
+
+$S(x,y) \xrightarrow[n \rightarrow \infty]{} 0$.\\[12pt]
+
+If we have a function like $z = q (x, y)$, the variance is given by:
+
+		\graybox{.9}{.8}{%
+			\be S^2(z) = \left( \frac{\partial q(x,y)}{\partial x} \right)^2 S^2(x) + 
+						 \left( \frac{\partial q(x,y)}{\partial y} \right)^2 S^2(y)\ee
+		}
+	This expression is less pessimistic than $\delta z$ (\ref{sec:unc}--\ref{item:ind}) for small errors, but more for large errors.
+
+	\ei
+\een
+
+\section {Classification of errors}
+
+\ben
+	\item \textbf{Systematic:} When they happen repeatedly, they affect the results always in the same direction \cite{gia:75}.
+	\bi
+		\item \textit{Bad calibration}: 
+Needles in the wrong position, measurement scale too big, poor internal calibration of electronic equipment, miscalibration by faulty construction, friction on the axes of moving parts, elastic hysteresis of the springs of suspension wires, etc.
+
+		\item \textit{Poor conditions}:
+When the conditions of pressure, temperature, etc. are not compatible with the specifications of the manuals.
+
+		\item \textit{Imperfect techniques}:
+It depends on the experience of the experimenter. For example, when measuring the spring constant, if the mass is increased by removing and placing again the weights each time, instead of gradually increasing them. This is a mistake because the spring gets shrinked and stretched.
+
+		\item \textit{Incorrect formulas}:
+When the measurements must have a certain number of significant digits, but formulas with certain ideal approximations are used.
+	\ei
+
+	\item \textbf{Casual}: When it is not possible to determine its cause, they are unpredictable.
+	\bi
+		\item \textit{Assessment errors}:
+If the same person performs the same measurement many times, they won't measure the same value. This has to do with the estimation they make of a certain fraction of the smallest division of the measuring scale.
+
+		\item \textit{Working conditions}: Environmental conditions, someone opens a tap or closes a door, planetary configurations, etc.
+
+		\item \textit{Lack of definition}: When the quantity to be measured is not fully defined, for example, the radius of a sphere of metal, since its surface has microscopic imperfections.
+	\ei
+
+	\item \textbf{Illegitimate}: Distraction, fatigue.
+	\bi
+		\item \textit{Personal}: Poor reading, incorrect adjustment of the conditions of a device, preliminary calculations poorly executed.
+
+		\item \textit{Calculation-wise}: Computers or programs without sufficient precision.
+
+		\item \textit{Chaotic}: When the effect of a disturbance is greater than the possible casual error.
+
+		\item \textit{Random}: These are the combination of many small and unknown causes. Several measurements must be performed or several different instruments must be used.
+	\ei
+\een
+
+\section{Definitions}
+
+\begin{description}
+	\item[Precision:] \hfill \\
+The smaller the casual errors are, the the more precise a measurement is.
+
+	\item[Accuracy:] \hfill \\
+The smaller the systematic errors are, the more accurate a measurement is.
+
+	\item[Sensitivity:] \hfill \\
+(Associated with the measuring device) Ability of an instrument to detect small variations in the measured variable.
+\end{description}

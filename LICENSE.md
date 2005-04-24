@@ -10,7 +10,7 @@ For other Creative Commons Licenses, see http://creativecommons.org/licenses/
 
 
 
-#TEXT LICENSE: The MIT License (MIT)
+#CODE LICENSE: The MIT License (MIT)
 
 Copyright (c) <2014> <me-stevens>
 
